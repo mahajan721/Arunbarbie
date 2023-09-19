@@ -39,6 +39,21 @@ sh 'zap-baseline.py -t http://localhost:8080 -r security-report.html'
 
 archiveArtifacts 'security-report.html'
 }
+  post {
+    success{
+      mail to: 'barbiemahajan721@gmail.com',
+        subject: 'Security Scan',
+        body: 'The security scan has passed.See attached logs for more information.',
+        attachLog: true
+    }
+    failure{
+      mail to: 'barbiemahajan721@gmail.com',
+        subject: 'Security Scan',
+        body: 'The security scan has failed. See attached logs for more information.',
+        attachLog: true
+    }
+      
+  }
 }
 stage('Deploy to Staging') {
 steps{
@@ -61,13 +76,6 @@ sh 'ssh user@production-server "cd /path/to/application && ./deploy.sh" '
 }
 }
 }
-}
-post {
-always {
-mail to: "barbiemahajan721@gmail.com",
-subject:"Pipeline status",
-body: "Build log attached!"
-}
-}
-}
+
+
 
