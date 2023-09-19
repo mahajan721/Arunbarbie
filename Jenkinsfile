@@ -18,7 +18,7 @@ sh 'mvn test'
         attachLog:true 
     }
     failure{
-      mail to: barbiemahajan721@gmail.com,'
+      mail to: 'barbiemahajan721@gmail.com,'
       subject:'Unit and Integration Tests Failed',
         body: 'The Unit and Integration tests failed. See attached logs for more information.',
         attachLog:true
