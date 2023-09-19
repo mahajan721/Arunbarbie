@@ -20,8 +20,8 @@ sh 'mvn sonar:sonar'
 }
 stage('Secutity Scan') {
 steps{
-sh 'zap-baseline.py -t
-https://localhost:8080 -r security-report.html'
+sh 'zap-baseline.py -t http://localhost:8080 -r security-report.html'
+
 archiveArtifacts 'security-report.html'
 }
 }
