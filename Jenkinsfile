@@ -14,7 +14,7 @@ sh 'mvn test'
     success{
       mail to: 'barbiemahajan721@gmail.com',
         subject: 'Unit and Integration Tests Passed',
-        body: 'The unit and Integration tests have passed. See aatached logs for more information.',
+        body: 'The unit and Integration tests have passed. See attached logs for more information.',
         attachLog:true 
     }
     failure{
@@ -28,8 +28,7 @@ sh 'mvn test'
 
 stage('Code Analysis') {
 steps{
-withSonarQubeEn('SonarQube'){
-sh 'mvn sonar:sonar'
+checkstyle canRunOnFailed: true, defaultEncoding: 'UTF-8',pattern:'**/*.java'
 }
 }
 }
