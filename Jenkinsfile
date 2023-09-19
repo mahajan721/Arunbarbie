@@ -72,10 +72,7 @@ stage('Deploy to Production'){
 steps{
 sshagent([ 'my-ssh-credentials']) 
 {
-sh 'ssh user@production-server "cd /path/to/application && ./deploy.sh" '
+sh 'ssh user@production-server "cd /path/to/application && ./deploy.sh" 
 }
 }
 }
-
-
-
