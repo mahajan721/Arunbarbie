@@ -10,7 +10,22 @@ stage('Unit and Integration Tests') {
 steps{
 sh 'mvn test'
 }
+  post{
+    success{
+      mail to: 'barbiemahajan721@gmail.com',
+        subject: 'Unit and Integration Tests Passed',
+        body: 'The unit and Integration tests have passed. See aatached logs for more information.',
+        attachLog:true 
+    }
+    failure{
+      mail to :barbiemahajan721@gmail.com,'
+      subject:'Unit and Integration Tests Failed',
+        body: 'The Unit and Integration tests failed. See attached logs for more information.',
+        attachLog:true
+    }
+  }
 }
+
 stage('Code Analysis') {
 steps{
 withSonarQubeEn('SonarQube'){
