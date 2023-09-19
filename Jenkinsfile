@@ -51,7 +51,7 @@ post {
 always {
 mail to: "barbiemahajan721@gmail.com",
 subject:"Pipeline status",
-emaillext attachLog: true ,body: "Pipeline finished"
+emailext attachLog: true,body: "Pipeline finished"
 }
 }
 }
