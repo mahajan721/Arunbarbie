@@ -18,14 +18,14 @@ sh 'mvn sonar:sonar'
 }
 }
 }
-stage('Secutity Scan') {
+stage('Security Scan') {
 steps{
 sh 'zap-baseline.py -t http://localhost:8080 -r security-report.html'
 
 archiveArtifacts 'security-report.html'
 }
 }
-stage('Deploy to Stagging') {
+stage('Deploy to Staging') {
 steps{
 sshagent(['my-ssh-credentials']) 
 {
@@ -33,7 +33,7 @@ sh 'ssh user@stagging-server "cd /path/to/application && ./deploy.sh" '
 }
 }
 }
-stage('Integration Tests on Stagging'){
+stage('Integration Tests on Staging'){
 steps{
 sh 'mvn test'
 }
